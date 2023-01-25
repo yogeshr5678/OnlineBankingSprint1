@@ -1,6 +1,5 @@
 package com.bootapp.rest.restapp.model;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
@@ -10,135 +9,102 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.bootapp.rest.restapp.enums.LoanEnum;
 import com.bootapp.rest.restapp.enums.LoanStatusType;
 
 @Entity
-@Table(name="loan")
+@Table(name = "loans")
 public class Loan {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int loan_Id;
+	
+	@Column(name = "loan_borrower")
+	private String borrower;
+	
+	@Column(name = "loan_type")
+	@Enumerated(EnumType.STRING)
+	private LoanStatusType type;
+	
+	@Column(name = "loan_amount")
+	private double amount;
+	
+	@Column(name = "loan_date")
+	private LocalDate startDate;
+	
+	@Enumerated(EnumType.STRING)
+	private LoanEnum loan;
+	
+	@ManyToOne
+	private Customer customer;
 
-    @Column(name="customer_id")
-    private Long customerId;
-
-    @Column(name="installment_count")
-    private Integer installmentCount;
-
-    @Column(name="principal_loan_amount")
-    private BigDecimal principalLoanAmount;
-
-    @Column(name="monthly_loan_amount")
-    private BigDecimal monthlyInstallmentAmount;
-
-    @Column(name="interest_to_paid")
-    private BigDecimal interestToBePaid;
-
-    @Column(name="principal_to_paid")
-    private BigDecimal principalToBePaid;
-
-    @Column(name="remaining_principal")
-    private BigDecimal remainingPrincipal;
-
-    @Column(name="due_date")
-    private LocalDate dueDate;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name ="loan_status")
-    private LoanStatusType loanStatusType;
-
-	public Long getId() {
-		return id;
+	public int getLoan_Id() {
+		return loan_Id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setLoan_Id(int loan_Id) {
+		this.loan_Id = loan_Id;
 	}
 
-	public Long getCustomerId() {
-		return customerId;
+	public String getBorrower() {
+		return borrower;
 	}
 
-	public void setCustomerId(Long customerId) {
-		this.customerId = customerId;
+	public void setBorrower(String borrower) {
+		this.borrower = borrower;
 	}
 
-	public Integer getInstallmentCount() {
-		return installmentCount;
+
+	public LoanStatusType getType() {
+		return type;
 	}
 
-	public void setInstallmentCount(Integer installmentCount) {
-		this.installmentCount = installmentCount;
+	public void setType(LoanStatusType type) {
+		this.type = type;
 	}
 
-	public BigDecimal getPrincipalLoanAmount() {
-		return principalLoanAmount;
+	public double getAmount() {
+		return amount;
 	}
 
-	public void setPrincipalLoanAmount(BigDecimal principalLoanAmount) {
-		this.principalLoanAmount = principalLoanAmount;
+	public void setAmount(double amount) {
+		this.amount = amount;
 	}
 
-	public BigDecimal getMonthlyInstallmentAmount() {
-		return monthlyInstallmentAmount;
+	public LocalDate getStartDate() {
+		return startDate;
 	}
 
-	public void setMonthlyInstallmentAmount(BigDecimal monthlyInstallmentAmount) {
-		this.monthlyInstallmentAmount = monthlyInstallmentAmount;
+	public void setStartDate(LocalDate startDate) {
+		this.startDate = startDate;
 	}
 
-	public BigDecimal getInterestToBePaid() {
-		return interestToBePaid;
+	public LoanEnum getLoan() {
+		return loan;
 	}
 
-	public void setInterestToBePaid(BigDecimal interestToBePaid) {
-		this.interestToBePaid = interestToBePaid;
+	public void setLoan(LoanEnum loan) {
+		this.loan = loan;
+	}
+	
+	public Customer getCustomer() {
+		return customer;
 	}
 
-	public BigDecimal getPrincipalToBePaid() {
-		return principalToBePaid;
-	}
-
-	public void setPrincipalToBePaid(BigDecimal principalToBePaid) {
-		this.principalToBePaid = principalToBePaid;
-	}
-
-	public BigDecimal getRemainingPrincipal() {
-		return remainingPrincipal;
-	}
-
-	public void setRemainingPrincipal(BigDecimal remainingPrincipal) {
-		this.remainingPrincipal = remainingPrincipal;
-	}
-
-	public LocalDate getDueDate() {
-		return dueDate;
-	}
-
-	public void setDueDate(LocalDate dueDate) {
-		this.dueDate = dueDate;
-	}
-
-	public LoanStatusType getLoanStatusType() {
-		return loanStatusType;
-	}
-
-	public void setLoanStatusType(LoanStatusType loanStatusType) {
-		this.loanStatusType = loanStatusType;
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 
 	@Override
 	public String toString() {
-		return "Loan [id=" + id + ", customerId=" + customerId + ", installmentCount=" + installmentCount
-				+ ", principalLoanAmount=" + principalLoanAmount + ", monthlyInstallmentAmount="
-				+ monthlyInstallmentAmount + ", interestToBePaid=" + interestToBePaid + ", principalToBePaid="
-				+ principalToBePaid + ", remainingPrincipal=" + remainingPrincipal + ", dueDate=" + dueDate
-				+ ", loanStatusType=" + loanStatusType + "]";
+		return "Loan [loan_Id=" + loan_Id + ", borrower=" + borrower + ", type=" + type + ", amount=" + amount
+				+ ", startDate=" + startDate + ", loan=" + loan + "]";
 	}
-    
-    
+	
+	
 
 }
