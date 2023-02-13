@@ -1,5 +1,11 @@
 package com.bootapp.rest.restapp.data;
 
-public interface AccountRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.bootapp.rest.restapp.model.Account;
+
+public interface AccountRepository extends JpaRepository<Account, Integer> {
+	
 
 }
+
