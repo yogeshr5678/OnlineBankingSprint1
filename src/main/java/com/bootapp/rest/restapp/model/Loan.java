@@ -58,7 +58,6 @@ public class Loan {
 		this.borrower = borrower;
 	}
 
-
 	public LoanStatusType getType() {
 		return type;
 	}
@@ -90,7 +89,7 @@ public class Loan {
 	public void setLoan(LoanEnum loan) {
 		this.loan = loan;
 	}
-	
+
 	public Customer getCustomer() {
 		return customer;
 	}
@@ -104,7 +103,6 @@ public class Loan {
 		return "Loan [loan_Id=" + loan_Id + ", borrower=" + borrower + ", type=" + type + ", amount=" + amount
 				+ ", startDate=" + startDate + ", loan=" + loan + "]";
 	}
-	
-	
 
+	
 }
